@@ -30,7 +30,7 @@ parse-js:
 # Run the full test suite
 test:
     python -m pytest tests/ -v
-    python .claude/hooks/pre-commit-check.py
+    python tools/scripts/structure_check.py
 
 # Run linters
 lint:

@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Project structure check
-        run: python .claude/hooks/pre-commit-check.py
+        run: python tools/scripts/structure_check.py
 
       - name: Lint with ruff
         run: ruff check .

@@ -1,9 +1,12 @@
 # 🌳 Vegas La Vega — The Urban Forestry Ecosystem
 
 [![Hackathon](https://img.shields.io/badge/Event-VEGA%20HackXplore%20Hackathon%20Karlsruhe-blue)](https://hacklabs.beehiiv.com/)
-[![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)](.)
+[![Status](https://img.shields.io/badge/Status-Completed%20%C2%B7%20Archived-lightgrey)](.)
 [![Team](https://img.shields.io/badge/Team-Vegas%20La%20Vega-green)](.)
 [![Hardware](https://img.shields.io/badge/Hardware-ESP32%20%2B%20Capacitive%20Soil%20Sensor-orange)](firmware/esp32/main.ino)
+
+> [!NOTE]
+> **Project status: completed hackathon project (VEGA-HackXplore Hackathon, Karlsruhe, Jun 2026), no longer maintained.** The repository is archived. The final submission deck and documentation are in [`docs/submission/`](docs/submission/).
 
 > **Mission:** The B2G2C smart canopy platform: Leveraging ground-truth soil data to optimize city logistics and ignite targeted citizen engagement.
 >
@@ -112,7 +115,6 @@ git commit -m "feat: add Flask REST endpoint for citizen watering event"
 ```
 vegas-la-vega/
 ├── README.md                    # This file
-├── AGENTS.md                    # AI agent guidelines & project boundaries
 ├── LICENSE                      # License details
 ├── pyproject.toml               # Python project configuration (ruff, mypy, pytest)
 ├── requirements.txt             # Python production dependencies
@@ -143,15 +145,13 @@ vegas-la-vega/
 │       └── main.ino             # Node firmware (ADC sampling, deep sleep, WiFi TX)
 │
 ├── tools/                       # 🛠️ Development & data parsing scripts
-│   ├── scripts/                 # One-off developer scripts (parse.py)
+│   ├── scripts/                 # Developer scripts (parse.py, structure_check.py)
 │   └── data/                    # Raw source datasets (gitignored)
 │
 ├── docs/                        # 📄 Project documentation
 │   ├── system-architecture.md   # Systems detail (API, hardware, topologies)
-│   ├── ONBOARDING.md            # Onboarding checklist for new developers
-│   ├── ai-project-structure.md  # Standard layout & import rules
-│   └── pitch/
-│       └── deck.md              # Slide deck content
+│   ├── research/                # Mind map and Miro board from ideation
+│   └── submission/              # Final pitch deck & project documentation
 │
 └── tests/                       # ✅ Pytest validation suite
     ├── conftest.py              # Test configurations & fixtures
@@ -249,35 +249,7 @@ Launch the server to handle telemetry data and route optimization:
 | **Khaled Salama** | Hardware / Embedded | `firmware/` | ESP32 DevKit setup, MOSFET power gating, ADC calibration, Wi-Fi/MQTT logic. |
 | **Mohammad El-Musleh** | Backend / Data | `backend/` | Flask REST API, SQLite models, Urgency Engine, Route Optimizer. |
 | **Ragini Mishra** | Frontend / UX | `src/` | Leaflet.js interactive citizen map, leaderboard, municipal dashboard, worker UI. |
-| **Vamsi Tungala** | Pitch / Business Model | `docs/pitch/` | Business concept, municipal slide deck, pitch script preparation. |
-
----
-
-## ✅ TODO / Progress
-
-### Phase 1: Edge Node & Data Ingestion (Completed)
-- [x] Write ESP32 deep-sleep firmware (`firmware/esp32/main.ino`)
-- [x] Configure median-filtered ADC sampling
-- [x] Implement MOSFET power gating for sensor longevity
-- [x] Build Flask API endpoints for telemetry collection (`backend/routes.py`)
-
-### Phase 2: Core Processing & Urgency Engine (In Progress)
-- [x] Implement SQLite database model (`backend/models.py`)
-- [x] Build Urgency Engine classifying trees by moisture levels (`backend/urgency.py`)
-- [ ] Connect weather forecasts to adjust urgency levels pre-emptively (Open-Meteo fusion)
-- [x] Build water truck routing logic (`backend/route_optimizer.py`)
-
-### Phase 3: Frontend Portals (In Progress)
-- [x] Design Citizen portal with map and adopted trees (`src/pages/CitizenMap.jsx`)
-- [x] Design City supervisor dashboard showing hot spots (`src/pages/AdminOverview.jsx`)
-- [x] Design Field worker navigation and watering verification (`src/pages/AdminRoutes.jsx`)
-- [x] Implement points/rewards and civic leaderboard (`src/pages/CitizenLeaderboard.jsx`)
-
-### Phase 4: Integration & Optimization (Pending)
-- [ ] Tune ADC mapping values for various soil types
-- [ ] Run full integration run with hardware nodes
-- [ ] Test the route optimizer under dynamic updates
-- [ ] Finalize Pitch Deck and record a backup video demo
+| **Vamsi Tungala** | Pitch / Business Model | Pitch | Business concept, municipal slide deck, pitch script preparation. |
 
 ---
 
@@ -318,7 +290,7 @@ Based on the Vegas La Vega long-term concept, the future development roadmap inc
 
 ## 📚 Resources
 
-- [Vegas Challenge Page](docs/research/challange/VEGA%20Challenge.md) — Challenge specifications and expected deliverables
+- [Final submission](docs/submission/) — Pitch deck and project documentation
 - [System Architecture](docs/system-architecture.md) — Hardware wiring & detailed sequences
 - [Vite JS](https://vite.dev) — React bundler documentation
 - [Flask REST](https://flask.palletsprojects.com/) — Backend framework guide
@@ -326,27 +298,6 @@ Based on the Vegas La Vega long-term concept, the future development roadmap inc
 
 ---
 
-## 📝 Git Workflow
-
-We use a default-deny staging policy. Never use `git add -A` or `git add .` to avoid committing build artifacts or keys.
-
-```bash
-# 1. Create a feature branch
-git checkout -b feature/your-feature
-
-# 2. Develop and check guidelines (AGENTS.md)
-./start.sh check
-
-# 3. Stage specifically
-git status
-git add src/pages/CitizenMap.jsx
-
-# 4. Commit and push
-git commit -m "feat: render interactive Leaflet map markers"
-git push origin feature/your-feature
-```
-
----
 *Event:* VEGA-HackXplore Hackathon 2026 — Karlsruhe  
 *Team:* Vegas La Vega  
-*Last updated:* June 28, 2026 (Hackathon Active Development)
+*Status:* Completed (June 2026), archived

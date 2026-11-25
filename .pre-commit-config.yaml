@@ -16,7 +16,7 @@ repos:
     hooks:
       - id: structure-check
         name: Project structure check
-        entry: python3 .claude/hooks/pre-commit-check.py
+        entry: python3 tools/scripts/structure_check.py
         language: system
         pass_filenames: false
         always_run: true

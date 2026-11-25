@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Pre-commit hook: verify structure and imports before commits.
 
-Place in .claude/hooks/ and reference from AGENTS.md.
+Run from the repository root: python tools/scripts/structure_check.py
 """
 
 import os
@@ -9,7 +9,6 @@ import subprocess
 import sys
 
 ROOT_FILES_ALLOWED = {
-    "AGENTS.md",
     "README.md",
     "LICENSE",
     "setup.py",
